@@ -7,13 +7,12 @@ In detail, it's a set of SDKs for document and plain text translation in our Clo
 It is easy to get started with GroupDocs.Translation Cloud, and there is nothing to install. Create an account at [GroupDocs Cloud](https://dashboard.groupdocs.cloud/#/) and get your application information, then you are ready to use [SDKs](https://github.com/groupdocs-translation-cloud)
 
 ## Release 20.08:
-- GroupDocs.Translation Python SDK
 - GroupDocs.Translation Java SDK
 
     
 ## Features:
 - Translation of Microsoft Word and Microsoft Excel documents
-- 9 languages and 16 languages pairs support
+- [10 languages and 18 languages pairs support](https://docs.groupdocs.cloud/translation/supported-languages/)
 - Translation of tables, headers, footers, footnotes / endnotes, image captions in Word documents
 - Translation of cells, charts, tables, pivot tables in Excel documents
 - Translation of plain text
@@ -97,3 +96,18 @@ Add this dependency to your project's POM:
 ```
 ### Dependencies
 [See build.gradle](./build.gradle#L27)
+
+## GroupDocs.Translation Cloud SDKs
+
+||||||||||
+|--------------|----------|-------|-------|-------|---------|---------|----------|-------|
+|[.NET](https://github.com/groupdocs-translation-cloud/groupdocs-translation-cloud-dotnet)|[Java](https://github.com/groupdocs-translation-cloud/groupdocs-translation-cloud-java)|PHP|Ruby|[Python](https://github.com/groupdocs-translation-cloud/groupdocs-translation-cloud-python)|Node.js|Android|Objective-C|Perl|
+
+## Resources
+
+- **Website:** [https://www.groupdocs.cloud](https://www.groupdocs.cloud)
+- **Product Home:** [GroupDocs.Translation Cloud](https://products.groupdocs.cloud/translation)
+- **Documentation:** [GroupDocs.Translation Cloud Documentation](https://wiki.groupdocs.cloud/translationcloud/)
+- **Forum:** [GroupDocs.Translation Cloud Forum](https://forum.groupdocs.cloud/c/translation)
+- **Blog:** [GroupDocs.Translation Cloud Blog](https://blog.groupdocs.cloud/category/translation/)
+- **Pricing:** [GroupDocs Cloud Pricing](https://purchase.groupdocs.cloud/pricing)
