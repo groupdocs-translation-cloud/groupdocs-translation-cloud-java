@@ -45,8 +45,8 @@ public String TranslateDocument() {
     String savePath = "";
     FileInfo fileInfo = new FileInfo(name, folder, pair, format, storage, saveFile, savePath);
     TranslationDocumentRequest translationDocumentRequest = new TranslationDocumentRequest(fileInfo.toString());
-    TranslationTextResponse translateTextResponse = TranslationApi.TranslateText(translationTextRequest);
-    return translateTextResponse.message;
+    TranslateDocumentResponse translateDocumentResponse = TranslationApi.TranslateDocument(translationDocumentRequest)
+    return translateDocumentResponse.message;
 }
 
 static String TranslateText() {
