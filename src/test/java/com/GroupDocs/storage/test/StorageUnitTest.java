@@ -172,6 +172,56 @@ public class StorageUnitTest {
     }
 
     @Test
+    public void copyFile(){
+
+        try {
+            //Upload file
+            File f = new File(StorageApi.class.getResource("/test.txt").toURI());
+            RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
+
+            Call<FilesUploadResult> call_create = storageApi.uploadFile("TranslateTest/test_copying_file.txt", fileToUpload, null);
+            Response<FilesUploadResult> res_create = call_create.execute();
+            assertTrue(res_create.isSuccessful());
+
+            FilesUploadResult result = res_create.body();
+            assertTrue(result.getUploaded().size() == 1);
+            assertTrue(result.getErrors().size() == 0);
+
+            // Copy file
+            Call<Void> call_move = storageApi.copyFile("TranslateTest/test_copying_file.txt",
+                    "TranslateTest/test_copied_file.txt", null, null, null);
+            Response<Void> res_move = call_move.execute();
+            assertTrue(res_move.isSuccessful());
+
+            // Check if the new file exists
+            Call<ObjectExist> call = storageApi.objectExists("TranslateTest/test_copied_file.txt", null, null);
+
+            Response<ObjectExist> res_exist = call.execute();
+            assertTrue(res_exist.isSuccessful());
+
+            ObjectExist res_exist_body = res_exist.body();
+            assertTrue("Error, moved new file not exis",res_exist_body.isExists());
+            assertFalse("Error, must be file, not folder", res_exist_body.isFolder());
+
+            // Check if the old file exists
+            call = storageApi.objectExists("TranslateTest/test_copying_file.txt",
+                    null, null);
+
+            res_exist = call.execute();
+            assertTrue(res_exist.isSuccessful());
+
+            res_exist_body = res_exist.body();
+            assertFalse("Error, copying file doesn't exist",!res_exist_body.isExists());
+            assertFalse("Error, must be file, not folder", res_exist_body.isFolder());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
     public void deleteFile(){
 
         try {
@@ -338,6 +388,50 @@ public class StorageUnitTest {
             fail();
         }
     }
+
+    @Test
+    public void copyFolder(){
+
+        String copyingFolder = "TestCopyingFolder";
+        String copiedFolder = "TestCopiedFolder";
+
+        try {
+            //Create folder
+            Call<Void> call_create = storageApi.createFolder(copyingFolder, null);
+            Response<Void> res_create = call_create.execute();
+            assertTrue(res_create.isSuccessful());
+
+            // Copy folder
+            Call<Void> call_move = storageApi.copyFolder(copyingFolder, copiedFolder, "", "");
+            Response<Void> res_move = call_move.execute();
+            assertTrue(res_move.isSuccessful());
+
+            //Checking is new folder exists.
+            Call<ObjectExist> call_exist = storageApi.objectExists(copiedFolder,
+                    null, null);
+
+            Response<ObjectExist> res_exist = call_exist.execute();
+            assertTrue(res_exist.isSuccessful());
+
+            ObjectExist res_exist_body = res_exist.body();
+            assertTrue("Error, must be exist new folder after copied",res_exist_body.isExists());
+            assertTrue("Error, must be folder after copied", res_exist_body.isFolder());
+
+            //Checking is old folder exists.
+            call_exist = storageApi.objectExists(copyingFolder,null, null);
+
+            res_exist = call_exist.execute();
+            assertTrue(res_exist.isSuccessful());
+
+            res_exist_body = res_exist.body();
+            assertFalse("Error, must be exist old folder after copied",res_exist_body.isExists());
+            assertFalse("Error, must be folder after copied", res_exist_body.isFolder());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            fail();
+        }
+    }
+
 
     @Test
     public void deleteFolder(){

@@ -86,7 +86,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.GroupDocs</groupId>
     <artifactId>GroupDocs-translation-cloud</artifactId>
-    <version>20.6.0</version>
+    <version>20.8.0</version>
     <scope>compile</scope>
 </dependency>
 <repositories>

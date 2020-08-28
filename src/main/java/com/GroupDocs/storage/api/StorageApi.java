@@ -1,29 +1,29 @@
 /*
-* --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="StorageApi.java">
-*   Copyright (c) 2020 GroupDocs.Translation for Cloud
-* </copyright>
-* <summary>
-*   Permission is hereby granted, free of charge, to any person obtaining a copy
-*  of this software and associated documentation files (the "Software"), to deal
-*  in the Software without restriction, including without limitation the rights
-*  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*  copies of the Software, and to permit persons to whom the Software is
-*  furnished to do so, subject to the following conditions:
-*
-*  The above copyright notice and this permission notice shall be included in all
-*  copies or substantial portions of the Software.
-*
-*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-*  SOFTWARE.
-* </summary>
-* --------------------------------------------------------------------------------------------------------------------
-*/
+ * --------------------------------------------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="StorageApi.java">
+ *   Copyright (c) 2020 GroupDocs.Translation for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------------------------------------------
+ */
 
 
 package com.GroupDocs.storage.api;
@@ -92,6 +92,28 @@ public interface StorageApi {
     );
 
     /**
+     * Copy file
+     *
+     * @param srcPath Source file path e.g. '/src.ext' (required)
+     * @param destPath Destination file path e.g. '/dest.ext' (required)
+     * @param srcStorageName Source storage name (optional)
+     * @param destStorageName Destination storage name (optional)
+     * @param versionId File version ID to move (optional)
+     * @return Call<Void>
+     */
+    @Headers({"Content-Type:application/json"})
+    @PUT(productUri+"storage/file/copy/{srcPath}")
+    Call<Void> copyFile(
+            @Path("srcPath") String srcPath,
+            @Query("destPath") String destPath,
+            @Query("srcStorageName") String srcStorageName,
+            @Query("destStorageName") String destStorageName,
+            @Query("versionId") String versionId
+    );
+
+
+
+    /**
      * Upload file
      *
      * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext If the content is multipart and path does not contains the file name it tries to get them from filename parameter from Content-Disposition header. (required)
@@ -150,6 +172,24 @@ public interface StorageApi {
     @Headers({"Content-Type:application/json"})
     @PUT(productUri+"storage/folder/move/{srcPath}")
     Call<Void> moveFolder(
+            @Path("srcPath") String srcPath,
+            @Query("destPath") String destPath,
+            @Query("srcStorageName") String srcStorageName,
+            @Query("destStorageName") String destStorageName
+    );
+
+    /**
+     * Copy folder
+     *
+     * @param srcPath Folder path to move e.g. '/folder' (required)
+     * @param destPath Destination folder path to move to e.g '/dst' (required)
+     * @param srcStorageName Source storage name (optional)
+     * @param destStorageName Destination storage name (optional)
+     * @return Call<Void>
+     */
+    @Headers({"Content-Type:application/json"})
+    @PUT(productUri+"storage/folder/copy/{srcPath}")
+    Call<Void> copyFolder(
             @Path("srcPath") String srcPath,
             @Query("destPath") String destPath,
             @Query("srcStorageName") String srcStorageName,

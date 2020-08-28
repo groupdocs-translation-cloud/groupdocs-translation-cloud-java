@@ -52,7 +52,6 @@ public class Demo {
             e.printStackTrace();
         }
         return translateTextResponse.translation;
-
     }
 
 
