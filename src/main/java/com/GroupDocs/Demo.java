@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="Demo.java">
-*   Copyright (c) 2020 GroupDocs.Translation for Cloud
+ *   Copyright (c) 2020 GroupDocs.Translation for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,7 +40,7 @@ import static java.lang.System.out;
 public class Demo {
 
     private static String translateText() {
-        TextInfo textInfo = new TextInfo("en-fr", "Test for model and sdk");
+        TextInfo textInfo = new TextInfo("fr-de", "Bon jour /n Comment êtes-vous?");
         ArrayList<TextInfo> textInfoList = new ArrayList<TextInfo>();
         textInfoList.add(textInfo);
         String userRequest = textInfoList.toString();
@@ -100,8 +100,11 @@ public class Demo {
         text = translateText();
         out.println(text);
 
-        text = TranslateDocument();
-        out.println(text);
+//        text = TranslateDocument();
+//        out.println(text);
+
+            text = healthCheck();
+            out.println(text);
 
     }
 //
@@ -121,8 +124,8 @@ public class Demo {
 //    }
 //
     private static void setUpConfig() throws Exception {
-        Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-        Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        Configuration.setAPP_SID("");
+        Configuration.setAPI_KEY("");
 
         Configuration.setAuthPath("https://api.groupdocs.cloud/connect/token");
         Configuration.setBasePath("https://api.groupdocs.cloud/v1.0");

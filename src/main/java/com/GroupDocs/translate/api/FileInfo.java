@@ -28,6 +28,8 @@
 
 package com.GroupDocs.translate.api;
 
+import java.util.ArrayList;
+
 public class FileInfo {
     private String name;
     private String folder;
@@ -36,6 +38,25 @@ public class FileInfo {
     private String savePath;
     private String saveFile;
     private String pair;
+    private Boolean masters;
+
+    public Boolean getMasters() {
+        return masters;
+    }
+
+    public void setMasters(Boolean masters) {
+        this.masters = masters;
+    }
+
+    public ArrayList<Integer> getElements() {
+        return elements;
+    }
+
+    public void setElements(ArrayList<Integer> elements) {
+        this.elements = elements;
+    }
+
+    private ArrayList<Integer> elements;
 
     public String getName() {
         return name;
@@ -103,6 +124,18 @@ public class FileInfo {
         this.pair = pair;
     }
 
+    public FileInfo(String name, String folder, String storage, String format, String savePath, String saveFile, String pair, Boolean masters, ArrayList<Integer> elements) {
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+        this.format = format;
+        this.savePath = savePath;
+        this.saveFile = saveFile;
+        this.pair = pair;
+        this.masters = masters;
+        this.elements = elements;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -113,6 +146,8 @@ public class FileInfo {
                 ", 'storage': '" + storage + '\'' +
                 ", 'saveFile': '" + saveFile + '\'' +
                 ", 'savePath': '" + savePath + '\'' +
+                ", 'masters': '" + masters + '\'' +
+                ", 'elements': '" + elements + '\'' +
                 '}';
     }
 }
