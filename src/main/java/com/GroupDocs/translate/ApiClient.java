@@ -125,8 +125,8 @@ public class ApiClient {
 
         RequestBody formBody = new FormBody.Builder()
                 .add("grant_type", "client_credentials")
-                .add("client_id", Configuration.getAPP_SID())
-                .add("client_secret", Configuration.getAPI_KEY())
+                .add("client_id", Configuration.getClient_id())
+                .add("client_secret", Configuration.getClient_secret())
                 .build();
 
         Request request = new Request.Builder()

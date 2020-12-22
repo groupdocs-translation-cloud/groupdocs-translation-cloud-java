@@ -39,6 +39,16 @@ public class FileInfo {
     private String saveFile;
     private String pair;
     private Boolean masters;
+    private ArrayList<Integer> elements;
+    private String outformat;
+
+    public String getOutformat() {
+        return outformat;
+    }
+
+    public void setOutformat(String outformat) {
+        this.outformat = outformat;
+    }
 
     public Boolean getMasters() {
         return masters;
@@ -55,8 +65,6 @@ public class FileInfo {
     public void setElements(ArrayList<Integer> elements) {
         this.elements = elements;
     }
-
-    private ArrayList<Integer> elements;
 
     public String getName() {
         return name;
@@ -114,17 +122,7 @@ public class FileInfo {
         this.pair = pair;
     }
 
-    public FileInfo(String name, String folder, String pair, String format, String storage, String saveFile, String savePath) {
-        this.name = name;
-        this.folder = folder;
-        this.storage = storage;
-        this.format = format;
-        this.savePath = savePath;
-        this.saveFile = saveFile;
-        this.pair = pair;
-    }
-
-    public FileInfo(String name, String folder, String storage, String format, String savePath, String saveFile, String pair, Boolean masters, ArrayList<Integer> elements) {
+    public FileInfo(String name, String folder, String storage, String format, String savePath, String saveFile, String pair, Boolean masters, ArrayList<Integer> elements, String outformat) {
         this.name = name;
         this.folder = folder;
         this.storage = storage;
@@ -134,20 +132,48 @@ public class FileInfo {
         this.pair = pair;
         this.masters = masters;
         this.elements = elements;
+        this.outformat = outformat;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                "'name': '" + name + '\'' +
-                ", 'folder': '" + folder + '\'' +
-                ", 'pair': '" + pair + '\'' +
-                ", 'format': '" + format + '\'' +
-                ", 'storage': '" + storage + '\'' +
-                ", 'saveFile': '" + saveFile + '\'' +
-                ", 'savePath': '" + savePath + '\'' +
-                ", 'masters': '" + masters + '\'' +
-                ", 'elements': '" + elements + '\'' +
-                '}';
+        if ((elements == null) & (outformat == null)) {
+            return "{" +
+                    "'name': '" + name + '\'' +
+                    ", 'folder': '" + folder + '\'' +
+                    ", 'pair': '" + pair + '\'' +
+                    ", 'format': '" + format + '\'' +
+                    ", 'storage': '" + storage + '\'' +
+                    ", 'saveFile': '" + saveFile + '\'' +
+                    ", 'savePath': '" + savePath + '\'' +
+                    '}';
+        }
+        else if (outformat == null) {
+            return "{" +
+                    "'name': '" + name + '\'' +
+                    ", 'folder': '" + folder + '\'' +
+                    ", 'pair': '" + pair + '\'' +
+                    ", 'format': '" + format + '\'' +
+                    ", 'storage': '" + storage + '\'' +
+                    ", 'saveFile': '" + saveFile + '\'' +
+                    ", 'savePath': '" + savePath + '\'' +
+                    ", 'masters': '" + masters + '\'' +
+                    ", 'elements': '" + elements + '\'' +
+                    '}';
+        }
+        else {
+            return "{" +
+                    "'name': '" + name + '\'' +
+                    ", 'folder': '" + folder + '\'' +
+                    ", 'pair': '" + pair + '\'' +
+                    ", 'format': '" + format + '\'' +
+                    ", 'storage': '" + storage + '\'' +
+                    ", 'saveFile': '" + saveFile + '\'' +
+                    ", 'savePath': '" + savePath + '\'' +
+                    ", 'masters': '" + masters + '\'' +
+                    ", 'elements': '" + elements + '\'' +
+                    ", 'outformat': '" + outformat + '\'' +
+                    '}';
+        }
     }
 }

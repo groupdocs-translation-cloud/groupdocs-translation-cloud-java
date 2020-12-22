@@ -55,8 +55,8 @@ public class StorageUnitTest {
     public static StorageApi storageApi;
 
     public StorageUnitTest(){
-        Configuration.setAPP_SID("");
-        Configuration.setAPI_KEY("");
+        Configuration.setClient_id("");
+        Configuration.setClient_secret("");
         Configuration.setBasePath("https://api.groupdocs.cloud/v1.0");
         Configuration.setAuthPath("https://api.groupdocs.cloud/connect/token");
         Configuration.setUserAgent("WebKit");

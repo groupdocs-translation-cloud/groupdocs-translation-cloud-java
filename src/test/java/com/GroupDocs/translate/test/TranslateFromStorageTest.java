@@ -30,7 +30,6 @@ package com.GroupDocs.translate.test;
 
 import com.GroupDocs.translate.ApiClient;
 import com.GroupDocs.translate.api.FileInfo;
-import com.GroupDocs.translate.api.TranslationApi;
 import com.GroupDocs.translate.api.TranslateApiInvoker;
 
 import com.GroupDocs.translate.api.TranslationDocumentRequest;
@@ -42,6 +41,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -95,7 +95,11 @@ public class TranslateFromStorageTest extends BaseTest {
             String pair = "en-fr";
             String format = "doc";
             String savePath = folder + "/translated";
-            FileInfo fileInfo = new FileInfo(fileName, folder, pair, format, storage, fileName, savePath);
+            String saveFile = "translated-" + fileName;
+            Boolean masters = false;
+            ArrayList<Integer> elements = null;
+            String outformat = null;
+            FileInfo fileInfo = new FileInfo(fileName, folder, storage, format, savePath, saveFile, pair, masters, elements, outformat);
             TranslationDocumentRequest translationDocumentRequest = new TranslationDocumentRequest(fileInfo.toString());
             String translationDocumentRequestJson = gson.toJson(translationDocumentRequest.getUserRequest());
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), translationDocumentRequestJson);

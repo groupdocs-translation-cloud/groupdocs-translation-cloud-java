@@ -30,8 +30,8 @@ public class Configuration {
 
     static String basePath = "https://api.groupdocs.cloud/v1.0";
     static String authPath = "https://api.groupdocs.cloud/connect/token";
-    static String appKEY;
-    static String appSID;
+    static String client_secret;
+    static String client_id;
     static String defaultUserAgent = "WebKit";
     static String srcTest;
     static String dstTest;
@@ -54,20 +54,20 @@ public class Configuration {
         Configuration.authPath = authPath;
     }
 
-    public static String getAPP_SID() {
-        return Configuration.appSID;
+    public static String getClient_secret() {
+        return client_secret;
     }
 
-    public static void setAPP_SID(String appSID) {
-        Configuration.appSID = appSID;
+    public static void setClient_secret(String client_secret) {
+        Configuration.client_secret = client_secret;
     }
 
-    public static String getAPI_KEY() {
-        return Configuration.appKEY;
+    public static String getClient_id() {
+        return client_id;
     }
 
-    public static void setAPI_KEY(String apiKey){
-        Configuration.appKEY = apiKey;
+    public static void setClient_id(String client_id) {
+        Configuration.client_id = client_id;
     }
 
     public static String getTestSrcDir() {
