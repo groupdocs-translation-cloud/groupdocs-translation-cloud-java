@@ -36,7 +36,7 @@ Additionally, user could obtain translated file in any other format available fo
 ## New Features & Enhancements Release 20.12
 - Conversion of translated files to other formats is added
 
-## Release 20.10
+## New Features & Enhancements Release 20.10
 - Microsoft PowerPoint presentations translation
 - French-Italian language pair support
 
