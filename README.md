@@ -46,17 +46,6 @@ Additionally, user could obtain translated file in any other format available fo
 ## New Features & Enhancements Release 20.8
 - GroupDocs.Translation Java SDK
 
-
-## Features:
-- Translation of Microsoft Word and Microsoft Excel documents
-- [10 languages and 22 languages pairs support](https://docs.groupdocs.cloud/translation/supported-languages/)
-- Translation of tables, headers, footers, footnotes / endnotes, image captions in Word documents
-- Translation of cells, charts, tables, pivot tables in Excel documents
-- Translation of text frames, tables, headers, footers, charts, comments in PowerPoint presentations
-- Translation of plain text
-- Conversion of translated files to other formats like pdf, tiff, xps, etc.
-- API that allows you manage your files and folders in our Cloud
-
 ## How to use the SDK?
 
 Our API is completely independent of your operating system, database system, or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone, and time-consuming. Therefore, we have provided and support [SDKs](https://github.com/groupdocs-translation-cloud) in many development languages to make it easier to integrate with us.
