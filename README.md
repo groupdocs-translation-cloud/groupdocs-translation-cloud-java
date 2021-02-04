@@ -50,45 +50,6 @@ Additionally, user could obtain translated file in any other format available fo
 
 Our API is completely independent of your operating system, database system, or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone, and time-consuming. Therefore, we have provided and support [SDKs](https://github.com/groupdocs-translation-cloud) in many development languages to make it easier to integrate with us.
 
-## Example
-```java
-import com.GroupDocs.translate.api.*;
-import com.GroupDocs.translate.Configuration;
-
-
-private static void setUpConfig() throws Exception {
-    Configuration.setClient_id("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    Configuration.setClient_secret("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    }
-
-public String TranslateDocument() {
-    String name = "test.docx";
-    String folder = "";
-    String pair = "en-fr";
-    String format = "docx";
-    String storage = "First Storage";
-    String saveFile = "translation.docx";
-    String savePath = "";
-    boolean masters = false;
-    ArrayList<Integer> elements = new ArrayList<Integer>();
-    String outformat = null;
-    FileInfo fileInfo = new FileInfo(name, folder, pair, format, storage, saveFile, savePath, masters, elements, outformat);
-    TranslationDocumentRequest translationDocumentRequest = new TranslationDocumentRequest(fileInfo.toString());
-    TranslateDocumentResponse translateDocumentResponse = TranslationApi.TranslateDocument(translationDocumentRequest)
-    return translateDocumentResponse.message;
-}
-
-static String TranslateText() {
-    pair = "en-fr";
-    text = "Text to translate";
-    TextInfo textInfo = new TextInfo(pair, text);
-    TranslationTextRequest translationTextRequest = new TranslationTextRequest(TextInfo.toString());
-    TranslationTextResponse translateTextResponse = TranslationApi.TranslateText(translationTextRequest);
-    return translateTextResponse.translation;
-}
-```
-_________________________
-
 ## Quickstart
 
 Make your solution using [SDK](https://github.com/groupdocs-translation-cloud), follow these steps:
@@ -103,7 +64,6 @@ Make a personal account on [GroupDocs Cloud Dashboard](https://dashboard.groupdo
   * Run Java console Demo
   * We recommend using JDK 13 to work with SDK
 
-_________________________
 
 ## SDK Details:
 
@@ -129,6 +89,24 @@ Add this dependency to your project's POM:
 ### Dependencies
 [See build.gradle](./build.gradle#L27)
 
+
+## Get Supported File Formats for Translation
+
+```java
+// Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+String MyClientId = "";
+String MyClientSecret = "";
+
+// Create instance of the API
+Configuration configuration = new Configuration(MyClientId, MyClientSecret);
+TranslationApi api = new TranslationApi(configuration);
+
+pair = "en-fr";
+text = "Text to translate";
+TextInfo textInfo = new TextInfo(pair, text);
+TranslationTextRequest translationTextRequest = new TranslationTextRequest(TextInfo.toString());
+TranslationTextResponse translateTextResponse = TranslationApi.TranslateText(translationTextRequest);
+```
 
 ## GroupDocs.Translation Cloud SDKs in Popular Languages
 
