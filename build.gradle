@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.GroupDocs'
-version '20.8'
+version '22.2'
 
 repositories {
     mavenCentral()
