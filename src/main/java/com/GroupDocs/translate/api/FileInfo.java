@@ -29,6 +29,7 @@
 package com.GroupDocs.translate.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FileInfo {
     private String name;
@@ -38,9 +39,14 @@ public class FileInfo {
     private String savePath;
     private String saveFile;
     private String pair;
-    private Boolean masters;
-    private ArrayList<Integer> elements;
     private String outformat;
+    private Boolean masters = false;
+    private ArrayList<Integer> elements = new ArrayList<>();
+    private String separator = ",";
+    private HashMap<String, ArrayList<String>> codelist = new HashMap<>();
+    private HashMap<Integer, ArrayList<ArrayList<String>>> frontlists = new HashMap<>();
+    private boolean optimizepdffontsize = false;
+
 
     public String getOutformat() {
         return outformat;
@@ -122,7 +128,40 @@ public class FileInfo {
         this.pair = pair;
     }
 
-    public FileInfo(String name, String folder, String storage, String format, String savePath, String saveFile, String pair, Boolean masters, ArrayList<Integer> elements, String outformat) {
+    public String getSeparator() {
+        return separator;
+    }
+
+    public void setSeparator(String separator) {
+        this.separator = separator;
+    }
+
+    public HashMap<String, ArrayList<String>> getCodelist() {
+        return codelist;
+    }
+
+    public void setCodelist(HashMap<String, ArrayList<String>> codelist) {
+        this.codelist = codelist;
+    }
+
+    public HashMap<Integer, ArrayList<ArrayList<String>>> getFrontlists() {
+        return frontlists;
+    }
+
+    public void setFrontlists(HashMap<Integer, ArrayList<ArrayList<String>>> frontlists) {
+        this.frontlists = frontlists;
+    }
+
+    public boolean isOptimizepdffontsize() {
+        return optimizepdffontsize;
+    }
+
+    public void setOptimizepdffontsize(boolean optimizepdffontsize) {
+        this.optimizepdffontsize = optimizepdffontsize;
+    }
+
+    public FileInfo(String pair, String format, String outformat, String storage, String name, String folder, String savePath,
+                    String saveFile, Boolean masters) {
         this.name = name;
         this.folder = folder;
         this.storage = storage;
@@ -131,49 +170,75 @@ public class FileInfo {
         this.saveFile = saveFile;
         this.pair = pair;
         this.masters = masters;
-        this.elements = elements;
         this.outformat = outformat;
+    }
+
+    public FileInfo(String pair, String format, String outformat, String storage, String name, String folder, String savePath,
+                    String saveFile, Boolean masters, ArrayList<Integer> elements, String separator,
+                    HashMap<String, ArrayList<String>> codelist, HashMap<Integer, ArrayList<ArrayList<String>>> frontlists, boolean optimizepdffontsize) {
+        this.pair = pair;
+        this.format = format;
+        this.outformat = outformat;
+        this.storage = storage;
+        this.name = name;
+        this.folder = folder;
+        this.savePath = savePath;
+        this.saveFile = saveFile;
+        this.masters = masters;
+        this.elements = elements;
+        this.separator = separator;
+        this.codelist = codelist;
+        this.frontlists = frontlists;
+        this.optimizepdffontsize = optimizepdffontsize;
     }
 
     @Override
     public String toString() {
-        if ((elements == null) & (outformat == null)) {
-            return "{" +
-                    "'name': '" + name + '\'' +
-                    ", 'folder': '" + folder + '\'' +
-                    ", 'pair': '" + pair + '\'' +
-                    ", 'format': '" + format + '\'' +
-                    ", 'storage': '" + storage + '\'' +
-                    ", 'saveFile': '" + saveFile + '\'' +
-                    ", 'savePath': '" + savePath + '\'' +
-                    '}';
+        String codelist_string = "";
+        for (String key : codelist.keySet()) {
+            ArrayList<String> enter_comma = new ArrayList<>();
+            for (String code: codelist.get(key)){
+                enter_comma.add("'" + code + "'");
+            }
+            String enter_string = "[" + String.join(",", enter_comma) + "]";
+
+            codelist_string = codelist_string +key + ":" + enter_string + ",";
         }
-        else if (outformat == null) {
-            return "{" +
-                    "'name': '" + name + '\'' +
-                    ", 'folder': '" + folder + '\'' +
-                    ", 'pair': '" + pair + '\'' +
-                    ", 'format': '" + format + '\'' +
-                    ", 'storage': '" + storage + '\'' +
-                    ", 'saveFile': '" + saveFile + '\'' +
-                    ", 'savePath': '" + savePath + '\'' +
-                    ", 'masters': '" + masters + '\'' +
-                    ", 'elements': '" + elements + '\'' +
-                    '}';
+        codelist_string = "{" + codelist_string.substring(0, codelist_string.length()-1) + "}";
+
+        String front_string = "";
+        for (Integer key : frontlists.keySet()) {
+            ArrayList<String> enter_comma_array = new ArrayList<>();
+            for (ArrayList<String> code: frontlists.get(key)){
+                ArrayList<String> enter_comma = new ArrayList<>();
+                for (String line: code){
+                    enter_comma.add("'" + line + "'");
+                }
+                enter_comma_array.add("["+ String.join(",", enter_comma)+"]");
+            }
+            String enter_string = "[" + String.join(",", String.join(",", enter_comma_array)) + "]";
+
+            front_string = front_string + key + ":" + enter_string + ",";
         }
-        else {
-            return "{" +
-                    "'name': '" + name + '\'' +
-                    ", 'folder': '" + folder + '\'' +
-                    ", 'pair': '" + pair + '\'' +
-                    ", 'format': '" + format + '\'' +
-                    ", 'storage': '" + storage + '\'' +
-                    ", 'saveFile': '" + saveFile + '\'' +
-                    ", 'savePath': '" + savePath + '\'' +
-                    ", 'masters': '" + masters + '\'' +
-                    ", 'elements': '" + elements + '\'' +
-                    ", 'outformat': '" + outformat + '\'' +
-                    '}';
-        }
+        front_string = "{" + front_string.substring(0, front_string.length()-1) + "}";
+
+
+        return "[{" +
+                "'pair': '" + pair + "'" +
+                ", 'format': '" + format + "'" +
+                ", 'outformat': '" + outformat + "'" +
+                ", 'storage': '" + storage + "'" +
+                ", 'name': '" + name + "'" +
+                ", 'folder': '" + folder + "'" +
+                ", 'savePath': '" + savePath + "'" +
+                ", 'saveFile': '" + saveFile + "'" +
+                ", 'masters': " + masters +
+                ", 'elements': " + elements +
+                ", 'separator': '" + separator + "'" +
+                ", 'shortcodedict': " + codelist_string +
+                ", 'frontmatterdict': " +front_string +
+                ", 'optimizepdffontsize': " + optimizepdffontsize +
+                "}]";
+
     }
 }

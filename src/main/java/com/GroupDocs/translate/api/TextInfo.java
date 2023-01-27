@@ -60,8 +60,8 @@ public class TextInfo {
 
     @Override
     public String toString() {
-        return "{'pair': '" + pair + '\'' +
-                ", 'text': '" + text + '\''+
+        return "{\"pair\": \"" + pair + '\"' +
+                ", \"text\": \"" + text + '\"'+
                 "}";
     }
 }

@@ -141,7 +141,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.GroupDocs</groupId>
     <artifactId>GroupDocs-translation-cloud</artifactId>
-    <version>22.11</version>
+    <version>23.1</version>
     <scope>compile</scope>
 </dependency>
 <repositories>

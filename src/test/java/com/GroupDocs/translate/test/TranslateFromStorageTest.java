@@ -99,7 +99,8 @@ public class TranslateFromStorageTest extends BaseTest {
             Boolean masters = false;
             ArrayList<Integer> elements = null;
             String outformat = null;
-            FileInfo fileInfo = new FileInfo(fileName, folder, storage, format, savePath, saveFile, pair, masters, elements, outformat);
+            FileInfo fileInfo = new FileInfo(pair, format, outformat, storage, fileName, folder, savePath,
+                    saveFile, masters);
             TranslationDocumentRequest translationDocumentRequest = new TranslationDocumentRequest(fileInfo.toString());
             String translationDocumentRequestJson = gson.toJson(translationDocumentRequest.getUserRequest());
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), translationDocumentRequestJson);

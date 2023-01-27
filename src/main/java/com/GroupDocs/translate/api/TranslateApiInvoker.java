@@ -66,4 +66,15 @@ public interface TranslateApiInvoker {
     @GET("translation/hc")
     Call<ResponseBody> HealthCheck(
     );
+
+    /**
+     * Parse Hugo document
+     * @Body name, folder, storage
+     * @return Call<ResponseBody>
+     */
+    @Headers({"Content-Type:application/json"})
+    @POST("translation/hugo")
+            Call<ResponseBody> ParseHugoDocument(
+            @Body RequestBody userRequest
+    );
 }

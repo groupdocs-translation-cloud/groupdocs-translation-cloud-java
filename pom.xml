@@ -5,7 +5,7 @@
     <artifactId>GroupDocs-translation-cloud</artifactId>
     <packaging>jar</packaging>
     <name>GroupDocs-translation-cloud</name>
-    <version>22.11</version>
+    <version>23.1</version>
     <url>https://products.groupdocs.cloud/translation/java</url>
     <description>GroupDocs cloud java SDK</description>
     <scm>
