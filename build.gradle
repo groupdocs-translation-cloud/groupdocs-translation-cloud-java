@@ -30,11 +30,11 @@ if(hasProperty('target') && target == 'android') {
     apply plugin: 'com.github.dcendents.android-maven'
 
     android {
-        compileSdkVersion 25
+        compileSdkVersion 34
         buildToolsVersion '25.0.2'
         defaultConfig {
             minSdkVersion 14
-            targetSdkVersion 25
+            targetSdkVersion 34
         }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8

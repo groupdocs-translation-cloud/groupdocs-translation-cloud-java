@@ -1,4 +1,4 @@
-# Java SDK for Translating Cloud Documents
+# Android SDK for Translating Cloud Documents
 
 ![GitHub](https://img.shields.io/github/license/groupdocs-translation-cloud/groupdocs-translation-cloud-android) ![](https://img.shields.io/badge/api-v2.0-lightgrey) ![Nuget](https://img.shields.io/nuget/vpre/GroupDocs.translation-Cloud) ![Nuget](https://img.shields.io/nuget/dt/GroupDocs.translation-Cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-translation-cloud/groupdocs-translation-cloud-dotnet)](https://github.com/groupdocs-translation-cloud/groupdocs-translation-cloud-dotnet/blob/master/LICENSE)
 
@@ -6,7 +6,7 @@
 
 [GroupDocs.Translation Cloud](https://products.groupdocs.cloud/translation/) is Cloud API to translate Word, Excel, PowerPoint, PDF, HTML, Markdown (including Markdown with Hugo syntax), OpenDocument, RESX, SRT files, scanned images and scanned PDF documents and plain text.
 
-For convenience of our Java customers, we introduce a simple SDK that assists to add translation of Microsoft Word documents, Microsoft Excel workbooks, Microsoft PowerPoint presentations, PDF documents, Markdown (including Hugo), OpenDocument files, scanned images and PDFs and plain text to your app with merely a few lines of code.
+For convenience of our Android customers, we introduce a simple SDK that assists to add translation of Microsoft Word documents, Microsoft Excel workbooks, Microsoft PowerPoint presentations, PDF documents, Markdown (including Hugo), OpenDocument files, scanned images and PDFs and plain text to your app with merely a few lines of code.
 
 In detail, it's a set of SDKs for document, images and plain text translation in our Cloud. It supports translation of .doc, .docx, .docm, .xls, .xlsx, .xlsm, .ppt, .pptx, .pptm, .pdf, .html, .md, .odt, .ods, .odp, .csv, .tsv, .rtf, .txt, .resx, .srt, .png, .jpg, .bmp files. Just pass a specific file or text to the GroupDocs.Translation Cloud API, and it will translate and save translated file in our Cloud or will return translated text.
 
@@ -252,29 +252,29 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [CloudFileResponse](docs/CloudFileResponse.md)
- - [CloudHugoResponse](docs/CloudHugoResponse.md)
- - [CloudTextResponse](docs/CloudTextResponse.md)
- - [CsvFileRequest](docs/CsvFileRequest.md)
- - [FileRequest](docs/FileRequest.md)
- - [HealthCheckStatus](docs/HealthCheckStatus.md)
- - [HtmlFileRequest](docs/HtmlFileRequest.md)
- - [HttpStatusCode](docs/HttpStatusCode.md)
- - [HugoRequest](docs/HugoRequest.md)
- - [ImageToFileRequest](docs/ImageToFileRequest.md)
- - [ImageToTextRequest](docs/ImageToTextRequest.md)
- - [LanguagePairData](docs/LanguagePairData.md)
- - [MarkdownFileRequest](docs/MarkdownFileRequest.md)
- - [PdfFileRequest](docs/PdfFileRequest.md)
- - [PresentationFileRequest](docs/PresentationFileRequest.md)
- - [ResxFileRequest](docs/ResxFileRequest.md)
- - [SpreadsheetFileRequest](docs/SpreadsheetFileRequest.md)
- - [StatusResponse](docs/StatusResponse.md)
- - [StringStringTuple](docs/StringStringTuple.md)
- - [TextDocumentFileRequest](docs/TextDocumentFileRequest.md)
- - [TextRequest](docs/TextRequest.md)
- - [UrlFileInfo](docs/UrlFileInfo.md)
- - [WorksheetData](docs/WorksheetData.md)
+- [CloudFileResponse](docs/CloudFileResponse.md)
+- [CloudHugoResponse](docs/CloudHugoResponse.md)
+- [CloudTextResponse](docs/CloudTextResponse.md)
+- [CsvFileRequest](docs/CsvFileRequest.md)
+- [FileRequest](docs/FileRequest.md)
+- [HealthCheckStatus](docs/HealthCheckStatus.md)
+- [HtmlFileRequest](docs/HtmlFileRequest.md)
+- [HttpStatusCode](docs/HttpStatusCode.md)
+- [HugoRequest](docs/HugoRequest.md)
+- [ImageToFileRequest](docs/ImageToFileRequest.md)
+- [ImageToTextRequest](docs/ImageToTextRequest.md)
+- [LanguagePairData](docs/LanguagePairData.md)
+- [MarkdownFileRequest](docs/MarkdownFileRequest.md)
+- [PdfFileRequest](docs/PdfFileRequest.md)
+- [PresentationFileRequest](docs/PresentationFileRequest.md)
+- [ResxFileRequest](docs/ResxFileRequest.md)
+- [SpreadsheetFileRequest](docs/SpreadsheetFileRequest.md)
+- [StatusResponse](docs/StatusResponse.md)
+- [StringStringTuple](docs/StringStringTuple.md)
+- [TextDocumentFileRequest](docs/TextDocumentFileRequest.md)
+- [TextRequest](docs/TextRequest.md)
+- [UrlFileInfo](docs/UrlFileInfo.md)
+- [WorksheetData](docs/WorksheetData.md)
 
 
 <a id="documentation-for-authorization"></a>
