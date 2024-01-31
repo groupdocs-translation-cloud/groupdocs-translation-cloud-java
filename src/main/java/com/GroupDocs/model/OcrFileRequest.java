@@ -19,13 +19,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.model.WorksheetData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -53,10 +50,10 @@ import java.util.Set;
 import com.groupdocs.JSON;
 
 /**
- * Request for spreadsheet files, like xls, xlsx, xlsm, ods
+ * OcrFileRequest
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-19T12:43:59.530580+03:00[Europe/Moscow]")
-public class SpreadsheetFileRequest {
+public class OcrFileRequest {
   public static final String SERIALIZED_NAME_SOURCE_LANGUAGE = "sourceLanguage";
   @SerializedName(SERIALIZED_NAME_SOURCE_LANGUAGE)
   private String sourceLanguage = "en";
@@ -140,19 +137,23 @@ public class SpreadsheetFileRequest {
   private SavingModeEnum savingMode;
 
   /**
-   * Input file format
+   * Original file format
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
     UNKNOWN("Unknown"),
     
-    XLS("Xls"),
+    BMP("Bmp"),
     
-    XLSX("Xlsx"),
+    JPG("Jpg"),
     
-    XLSM("Xlsm"),
+    PNG("Png"),
     
-    ODS("Ods");
+    SVG("Svg"),
+    
+    GIF("Gif"),
+    
+    PDF("Pdf");
 
     private String value;
 
@@ -199,40 +200,22 @@ public class SpreadsheetFileRequest {
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format = FormatEnum.XLSX;
+  private FormatEnum format = FormatEnum.UNKNOWN;
 
   /**
-   * output file format
+   * File format after recognition
    */
-  @JsonAdapter(OutputFormatEnum.Adapter.class)
-  public enum OutputFormatEnum {
-    XLS("Xls"),
+  @JsonAdapter(OcrformatEnum.Adapter.class)
+  public enum OcrformatEnum {
+    PDF("Pdf"),
     
     XLSX("Xlsx"),
     
-    XLSM("Xlsm"),
-    
-    XLSB("Xlsb"),
-    
-    HTML("Html"),
-    
-    PDF("Pdf"),
-    
-    XPS("Xps"),
-    
-    ODS("Ods"),
-    
-    MD("Md"),
-    
-    DOCX("Docx"),
-    
-    PPTX("Pptx"),
-    
-    TIFF("Tiff");
+    CSV("Csv");
 
     private String value;
 
-    OutputFormatEnum(String value) {
+    OcrformatEnum(String value) {
       this.value = value;
     }
 
@@ -245,8 +228,8 @@ public class SpreadsheetFileRequest {
       return String.valueOf(value);
     }
 
-    public static OutputFormatEnum fromValue(String value) {
-      for (OutputFormatEnum b : OutputFormatEnum.values()) {
+    public static OcrformatEnum fromValue(String value) {
+      for (OcrformatEnum b : OcrformatEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -254,41 +237,53 @@ public class SpreadsheetFileRequest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<OutputFormatEnum> {
+    public static class Adapter extends TypeAdapter<OcrformatEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final OutputFormatEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final OcrformatEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public OutputFormatEnum read(final JsonReader jsonReader) throws IOException {
+      public OcrformatEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return OutputFormatEnum.fromValue(value);
+        return OcrformatEnum.fromValue(value);
       }
     }
 
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       String value = jsonElement.getAsString();
-      OutputFormatEnum.fromValue(value);
+      OcrformatEnum.fromValue(value);
     }
   }
 
+  public static final String SERIALIZED_NAME_OCRFORMAT = "ocrformat";
+  @SerializedName(SERIALIZED_NAME_OCRFORMAT)
+  private OcrformatEnum ocrformat = OcrformatEnum.PDF;
+
   public static final String SERIALIZED_NAME_OUTPUT_FORMAT = "outputFormat";
   @SerializedName(SERIALIZED_NAME_OUTPUT_FORMAT)
-  private OutputFormatEnum outputFormat;
+  private String outputFormat;
 
-  public static final String SERIALIZED_NAME_WORKSHEETS = "worksheets";
-  @SerializedName(SERIALIZED_NAME_WORKSHEETS)
-  private List<Integer> worksheets;
+  public static final String SERIALIZED_NAME_ROTATION_ANGLE = "rotationAngle";
+  @SerializedName(SERIALIZED_NAME_ROTATION_ANGLE)
+  private Integer rotationAngle;
 
-  public static final String SERIALIZED_NAME_RANGES = "ranges";
-  @SerializedName(SERIALIZED_NAME_RANGES)
-  private Map<String, WorksheetData> ranges;
+  public static final String SERIALIZED_NAME_FORMATTING = "formatting";
+  @SerializedName(SERIALIZED_NAME_FORMATTING)
+  private Boolean formatting = true;
 
-  public SpreadsheetFileRequest() {
+  public static final String SERIALIZED_NAME_ROUTE = "route";
+  @SerializedName(SERIALIZED_NAME_ROUTE)
+  private String route;
+
+  public static final String SERIALIZED_NAME_PAGES = "pages";
+  @SerializedName(SERIALIZED_NAME_PAGES)
+  private List<Integer> pages;
+
+  public OcrFileRequest() {
   }
 
-  public SpreadsheetFileRequest sourceLanguage(String sourceLanguage) {
+  public OcrFileRequest sourceLanguage(String sourceLanguage) {
     this.sourceLanguage = sourceLanguage;
     return this;
   }
@@ -307,12 +302,12 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest targetLanguages(List<String> targetLanguages) {
+  public OcrFileRequest targetLanguages(List<String> targetLanguages) {
     this.targetLanguages = targetLanguages;
     return this;
   }
 
-  public SpreadsheetFileRequest addTargetLanguagesItem(String targetLanguagesItem) {
+  public OcrFileRequest addTargetLanguagesItem(String targetLanguagesItem) {
     if (this.targetLanguages == null) {
       this.targetLanguages = new ArrayList<>();
     }
@@ -334,7 +329,7 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest _file(byte[] _file) {
+  public OcrFileRequest _file(byte[] _file) {
     this._file = _file;
     return this;
   }
@@ -353,7 +348,7 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest originalFileName(String originalFileName) {
+  public OcrFileRequest originalFileName(String originalFileName) {
     this.originalFileName = originalFileName;
     return this;
   }
@@ -372,7 +367,7 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest url(String url) {
+  public OcrFileRequest url(String url) {
     this.url = url;
     return this;
   }
@@ -391,7 +386,7 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest origin(String origin) {
+  public OcrFileRequest origin(String origin) {
     this.origin = origin;
     return this;
   }
@@ -410,7 +405,7 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest savingMode(SavingModeEnum savingMode) {
+  public OcrFileRequest savingMode(SavingModeEnum savingMode) {
     this.savingMode = savingMode;
     return this;
   }
@@ -429,16 +424,16 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest format(FormatEnum format) {
+  public OcrFileRequest format(FormatEnum format) {
     this.format = format;
     return this;
   }
 
    /**
-   * Input file format
+   * Original file format
    * @return format
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public FormatEnum getFormat() {
     return format;
   }
@@ -448,7 +443,26 @@ public class SpreadsheetFileRequest {
   }
 
 
-  public SpreadsheetFileRequest outputFormat(OutputFormatEnum outputFormat) {
+  public OcrFileRequest ocrformat(OcrformatEnum ocrformat) {
+    this.ocrformat = ocrformat;
+    return this;
+  }
+
+   /**
+   * File format after recognition
+   * @return ocrformat
+  **/
+  @javax.annotation.Nonnull
+  public OcrformatEnum getOcrformat() {
+    return ocrformat;
+  }
+
+  public void setOcrformat(OcrformatEnum ocrformat) {
+    this.ocrformat = ocrformat;
+  }
+
+
+  public OcrFileRequest outputFormat(String outputFormat) {
     this.outputFormat = outputFormat;
     return this;
   }
@@ -458,66 +472,96 @@ public class SpreadsheetFileRequest {
    * @return outputFormat
   **/
   @javax.annotation.Nonnull
-  public OutputFormatEnum getOutputFormat() {
+  public String getOutputFormat() {
     return outputFormat;
   }
 
-  public void setOutputFormat(OutputFormatEnum outputFormat) {
+  public void setOutputFormat(String outputFormat) {
     this.outputFormat = outputFormat;
   }
 
 
-  public SpreadsheetFileRequest worksheets(List<Integer> worksheets) {
-    this.worksheets = worksheets;
-    return this;
-  }
-
-  public SpreadsheetFileRequest addWorksheetsItem(Integer worksheetsItem) {
-    if (this.worksheets == null) {
-      this.worksheets = new ArrayList<>();
-    }
-    this.worksheets.add(worksheetsItem);
+  public OcrFileRequest rotationAngle(Integer rotationAngle) {
+    this.rotationAngle = rotationAngle;
     return this;
   }
 
    /**
-   * List of Worksheets to translate by sequence number
-   * @return worksheets
+   * Left to write angle to rotate scanned image / pdf
+   * @return rotationAngle
   **/
   @javax.annotation.Nullable
-  public List<Integer> getWorksheets() {
-    return worksheets;
+  public Integer getRotationAngle() {
+    return rotationAngle;
   }
 
-  public void setWorksheets(List<Integer> worksheets) {
-    this.worksheets = worksheets;
+  public void setRotationAngle(Integer rotationAngle) {
+    this.rotationAngle = rotationAngle;
   }
 
 
-  public SpreadsheetFileRequest ranges(Map<String, WorksheetData> ranges) {
-    this.ranges = ranges;
-    return this;
-  }
-
-  public SpreadsheetFileRequest putRangesItem(String key, WorksheetData rangesItem) {
-    if (this.ranges == null) {
-      this.ranges = new HashMap<>();
-    }
-    this.ranges.put(key, rangesItem);
+  public OcrFileRequest formatting(Boolean formatting) {
+    this.formatting = formatting;
     return this;
   }
 
    /**
-   * Dictionary of ranges in Excel workbooks
-   * @return ranges
+   * If document&#39;s formatting should be preserved, default true
+   * @return formatting
   **/
   @javax.annotation.Nullable
-  public Map<String, WorksheetData> getRanges() {
-    return ranges;
+  public Boolean getFormatting() {
+    return formatting;
   }
 
-  public void setRanges(Map<String, WorksheetData> ranges) {
-    this.ranges = ranges;
+  public void setFormatting(Boolean formatting) {
+    this.formatting = formatting;
+  }
+
+
+  public OcrFileRequest route(String route) {
+    this.route = route;
+    return this;
+  }
+
+   /**
+   * endpoints route
+   * @return route
+  **/
+  @javax.annotation.Nullable
+  public String getRoute() {
+    return route;
+  }
+
+  public void setRoute(String route) {
+    this.route = route;
+  }
+
+
+  public OcrFileRequest pages(List<Integer> pages) {
+    this.pages = pages;
+    return this;
+  }
+
+  public OcrFileRequest addPagesItem(Integer pagesItem) {
+    if (this.pages == null) {
+      this.pages = new ArrayList<>();
+    }
+    this.pages.add(pagesItem);
+    return this;
+  }
+
+   /**
+   * List of pages to translate for scanned pdf
+   * @return pages
+  **/
+  @javax.annotation.Nullable
+  public List<Integer> getPages() {
+    return pages;
+  }
+
+  public void setPages(List<Integer> pages) {
+    this.pages = pages;
   }
 
 
@@ -530,18 +574,21 @@ public class SpreadsheetFileRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SpreadsheetFileRequest spreadsheetFileRequest = (SpreadsheetFileRequest) o;
-    return Objects.equals(this.sourceLanguage, spreadsheetFileRequest.sourceLanguage) &&
-        Objects.equals(this.targetLanguages, spreadsheetFileRequest.targetLanguages) &&
-        Arrays.equals(this._file, spreadsheetFileRequest._file) &&
-        Objects.equals(this.originalFileName, spreadsheetFileRequest.originalFileName) &&
-        Objects.equals(this.url, spreadsheetFileRequest.url) &&
-        Objects.equals(this.origin, spreadsheetFileRequest.origin) &&
-        Objects.equals(this.savingMode, spreadsheetFileRequest.savingMode) &&
-        Objects.equals(this.format, spreadsheetFileRequest.format) &&
-        Objects.equals(this.outputFormat, spreadsheetFileRequest.outputFormat) &&
-        Objects.equals(this.worksheets, spreadsheetFileRequest.worksheets) &&
-        Objects.equals(this.ranges, spreadsheetFileRequest.ranges);
+    OcrFileRequest ocrFileRequest = (OcrFileRequest) o;
+    return Objects.equals(this.sourceLanguage, ocrFileRequest.sourceLanguage) &&
+        Objects.equals(this.targetLanguages, ocrFileRequest.targetLanguages) &&
+        Arrays.equals(this._file, ocrFileRequest._file) &&
+        Objects.equals(this.originalFileName, ocrFileRequest.originalFileName) &&
+        Objects.equals(this.url, ocrFileRequest.url) &&
+        Objects.equals(this.origin, ocrFileRequest.origin) &&
+        Objects.equals(this.savingMode, ocrFileRequest.savingMode) &&
+        Objects.equals(this.format, ocrFileRequest.format) &&
+        Objects.equals(this.ocrformat, ocrFileRequest.ocrformat) &&
+        Objects.equals(this.outputFormat, ocrFileRequest.outputFormat) &&
+        Objects.equals(this.rotationAngle, ocrFileRequest.rotationAngle) &&
+        Objects.equals(this.formatting, ocrFileRequest.formatting) &&
+        Objects.equals(this.route, ocrFileRequest.route) &&
+        Objects.equals(this.pages, ocrFileRequest.pages);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -550,7 +597,7 @@ public class SpreadsheetFileRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceLanguage, targetLanguages, Arrays.hashCode(_file), originalFileName, url, origin, savingMode, format, outputFormat, worksheets, ranges);
+    return Objects.hash(sourceLanguage, targetLanguages, Arrays.hashCode(_file), originalFileName, url, origin, savingMode, format, ocrformat, outputFormat, rotationAngle, formatting, route, pages);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -563,7 +610,7 @@ public class SpreadsheetFileRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SpreadsheetFileRequest {\n");
+    sb.append("class OcrFileRequest {\n");
     sb.append("    sourceLanguage: ").append(toIndentedString(sourceLanguage)).append("\n");
     sb.append("    targetLanguages: ").append(toIndentedString(targetLanguages)).append("\n");
     sb.append("    _file: ").append(toIndentedString(_file)).append("\n");
@@ -572,9 +619,12 @@ public class SpreadsheetFileRequest {
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    savingMode: ").append(toIndentedString(savingMode)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    ocrformat: ").append(toIndentedString(ocrformat)).append("\n");
     sb.append("    outputFormat: ").append(toIndentedString(outputFormat)).append("\n");
-    sb.append("    worksheets: ").append(toIndentedString(worksheets)).append("\n");
-    sb.append("    ranges: ").append(toIndentedString(ranges)).append("\n");
+    sb.append("    rotationAngle: ").append(toIndentedString(rotationAngle)).append("\n");
+    sb.append("    formatting: ").append(toIndentedString(formatting)).append("\n");
+    sb.append("    route: ").append(toIndentedString(route)).append("\n");
+    sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -605,15 +655,18 @@ public class SpreadsheetFileRequest {
     openapiFields.add("origin");
     openapiFields.add("savingMode");
     openapiFields.add("format");
+    openapiFields.add("ocrformat");
     openapiFields.add("outputFormat");
-    openapiFields.add("worksheets");
-    openapiFields.add("ranges");
+    openapiFields.add("rotationAngle");
+    openapiFields.add("formatting");
+    openapiFields.add("route");
+    openapiFields.add("pages");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("sourceLanguage");
     openapiRequiredFields.add("targetLanguages");
-    openapiRequiredFields.add("format");
+    openapiRequiredFields.add("ocrformat");
     openapiRequiredFields.add("outputFormat");
   }
 
@@ -621,25 +674,25 @@ public class SpreadsheetFileRequest {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to SpreadsheetFileRequest
+  * @throws IOException if the JSON Element is invalid with respect to OcrFileRequest
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!SpreadsheetFileRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SpreadsheetFileRequest is not found in the empty JSON string", SpreadsheetFileRequest.openapiRequiredFields.toString()));
+        if (!OcrFileRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OcrFileRequest is not found in the empty JSON string", OcrFileRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SpreadsheetFileRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SpreadsheetFileRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!OcrFileRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OcrFileRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SpreadsheetFileRequest.openapiRequiredFields) {
+      for (String requiredField : OcrFileRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -670,19 +723,27 @@ public class SpreadsheetFileRequest {
       if (jsonObj.get("savingMode") != null && !jsonObj.get("savingMode").isJsonNull()) {
         SavingModeEnum.validateJsonElement(jsonObj.get("savingMode"));
       }
-      if (!jsonObj.get("format").isJsonPrimitive()) {
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
-      // validate the required field `format`
-      FormatEnum.validateJsonElement(jsonObj.get("format"));
+      // validate the optional field `format`
+      if (jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) {
+        FormatEnum.validateJsonElement(jsonObj.get("format"));
+      }
+      if (!jsonObj.get("ocrformat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ocrformat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ocrformat").toString()));
+      }
+      // validate the required field `ocrformat`
+      OcrformatEnum.validateJsonElement(jsonObj.get("ocrformat"));
       if (!jsonObj.get("outputFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `outputFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("outputFormat").toString()));
       }
-      // validate the required field `outputFormat`
-      OutputFormatEnum.validateJsonElement(jsonObj.get("outputFormat"));
+      if ((jsonObj.get("route") != null && !jsonObj.get("route").isJsonNull()) && !jsonObj.get("route").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `route` to be a primitive type in the JSON string but got `%s`", jsonObj.get("route").toString()));
+      }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("worksheets") != null && !jsonObj.get("worksheets").isJsonNull() && !jsonObj.get("worksheets").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `worksheets` to be an array in the JSON string but got `%s`", jsonObj.get("worksheets").toString()));
+      if (jsonObj.get("pages") != null && !jsonObj.get("pages").isJsonNull() && !jsonObj.get("pages").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pages` to be an array in the JSON string but got `%s`", jsonObj.get("pages").toString()));
       }
   }
 
@@ -690,22 +751,22 @@ public class SpreadsheetFileRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SpreadsheetFileRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SpreadsheetFileRequest' and its subtypes
+       if (!OcrFileRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OcrFileRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SpreadsheetFileRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SpreadsheetFileRequest.class));
+       final TypeAdapter<OcrFileRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OcrFileRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SpreadsheetFileRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<OcrFileRequest>() {
            @Override
-           public void write(JsonWriter out, SpreadsheetFileRequest value) throws IOException {
+           public void write(JsonWriter out, OcrFileRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public SpreadsheetFileRequest read(JsonReader in) throws IOException {
+           public OcrFileRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -716,18 +777,18 @@ public class SpreadsheetFileRequest {
   }
 
  /**
-  * Create an instance of SpreadsheetFileRequest given an JSON string
+  * Create an instance of OcrFileRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SpreadsheetFileRequest
-  * @throws IOException if the JSON string is invalid with respect to SpreadsheetFileRequest
+  * @return An instance of OcrFileRequest
+  * @throws IOException if the JSON string is invalid with respect to OcrFileRequest
   */
-  public static SpreadsheetFileRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SpreadsheetFileRequest.class);
+  public static OcrFileRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OcrFileRequest.class);
   }
 
  /**
-  * Convert an instance of SpreadsheetFileRequest to an JSON string
+  * Convert an instance of OcrFileRequest to an JSON string
   *
   * @return JSON string
   */
