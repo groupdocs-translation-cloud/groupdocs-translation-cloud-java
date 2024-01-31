@@ -2,12 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.groupdocs</groupId>
-    <artifactId>GroupDocs-translation-cloud</artifactId>
+    <artifactId>GroupDocs-translation-cloud-android</artifactId>
     <packaging>jar</packaging>
     <name>GroupDocs-translation-cloud</name>
+<<<<<<< HEAD
     <version>24.1</version>
     <url>https://products.groupdocs.cloud/translation/java</url>
     <description>GroupDocs cloud java SDK</description>
+=======
+    <version>23.10</version>
+    <url>https://products.groupdocs.cloud/translation/android</url>
+    <description>GroupDocs cloud Android SDK</description>
+>>>>>>> fefc5f74c9be4f9243c08101e69791413075d697
     <scm>
         <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
         <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
