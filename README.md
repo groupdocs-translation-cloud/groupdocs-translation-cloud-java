@@ -265,7 +265,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
-<<<<<<< HEAD
  - [AutoPostRequest](docs/AutoPostRequest.md)
  - [CloudFileResponse](docs/CloudFileResponse.md)
  - [CloudHugoResponse](docs/CloudHugoResponse.md)
