@@ -290,7 +290,7 @@ Class | Method | HTTP request | Description
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
-=======
+
 - [CloudFileResponse](docs/CloudFileResponse.md)
 - [CloudHugoResponse](docs/CloudHugoResponse.md)
 - [CloudTextResponse](docs/CloudTextResponse.md)
@@ -314,7 +314,6 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 - [TextRequest](docs/TextRequest.md)
 - [UrlFileInfo](docs/UrlFileInfo.md)
 - [WorksheetData](docs/WorksheetData.md)
->>>>>>> fefc5f74c9be4f9243c08101e69791413075d697
 
 ## GroupDocs.Translation Cloud SDKs in Popular Languages
 
