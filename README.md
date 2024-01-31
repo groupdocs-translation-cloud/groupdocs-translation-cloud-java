@@ -23,15 +23,22 @@ It is easy to get started with GroupDocs.Translation Cloud and there is nothing 
 - Translation of Markdown files
 - Translation of Hugo syntax in Markdown files
 - Translation of plain text
-- Translation of .NET resources of RESX format
-- Translation of subtitles in SRT format
-- Translation of images and scanned PDFs getting plain text or PDF as a result
-- Translation of scanned tables getting Excel workbook as a result
-- Translation of handwritten text 
+- Translation of images
+- API that allows you to manage your files and folders in our Cloud
 
 ## Supported Translation Formats
 
-You shoukd specify format of document to translate putting in the request’s body the appropriate enum value.
+You can specify format of document to translate putting in the request’s body:
+
+- **extension of word file (docx / docm / doc / rtf)** — to translate **Microsoft Word® document**
+- **extension of excel file (xlsx / xlsm / xls / csv / tsv)** — to translate **Microsoft Excel® workbook**
+- **extension of powerpoint file (ppt / pptx / pptm)** — to translate **Microsoft PowerPoint® presentation**
+- **extension of PDF file (pdf)** — to translate **Adobe PDF document**
+- **extension of Markdown file (md)** — to translate **Markdown file**
+- **extension of HTML file (html)** — to translate **HTML file**
+- **extension of OpenDocument file (odt / ods / odp)** — to translate files created in OpenOffice or similar suits
+- **extension of Resources file (resx)** — to translate **resource file for .NET application**
+- **hugo** - to translate Markdown file with Hugo syntax
 
 Additionally, user could obtain translated file in any other format available for conversion. Just specify output format of translated document by putting file extension in the request’s body:
 
@@ -60,7 +67,7 @@ Please visit [Supported Formats](https://docs.groupdocs.cloud/translation/suppor
 - **en-id / id-en** — to translate from English to Indonesian or from Indonesian to English
 - **en-hi / hi-en** — to translate from English to Hindi or from Hindi to English
 - **en-el / el-en** — to translate from English to Greek or from Greek to English
-- **en-nl / nl-en**— to translate from English to Dutch or from Dutch to English
+- **en-nl / nl-en** — to translate from English to Dutch or from Dutch to English
 - **en-hu / hu-en** — to translate from English to Hunngarian or from Hungarian to English
 - **en-sv / sv-en** — to translate from English to Swedish or from Swedish to English
 - **en-tr / tr-en** — to translate from English to Turkish or from Turkish to English
@@ -79,12 +86,12 @@ Please visit [Supported Formats](https://docs.groupdocs.cloud/translation/suppor
 - **en-bg / bg-en** — to translate from English to Bulgarian or from Bulgarian to English
 - **en-be / be-en** — to translate from English to Bengali or from Bengali to English
 - **en-da / da-en** — to translate from English to Danish or from Danish to English
-- **en-lt / lt-en** — to translate from English to Lithuanian or from Lithuanian to English
-- **en-lv / lv-en** — to translate from English to Latvian or from Latvian to English
 - **en-no / no-en** — to translate from English to Norwegian or from Norwegian to English
+- **en-lv / lv-en** — to translate from English to Latvian or from Latvian to English
+- **en-lt / lt-en** — to translate from English to Lithuanian or from Lithuanian to English
 - **en-et / et-en** — to translate from English to Estonian or from Estonian to English
-- **en-hy / hy-en** — to translate from English to Armenian or from Armenian to English
 - **en-ca / ca-en** — to translate from English to Catalan or from Catalan to English
+- **en-hy / hy-en** — to translate from English to Armenian or from Armenian to English
 - **en-hr / hr-en** — to translate from English to Croatian or from Croatian to English
 - **en-sr / sr-en** — to translate from English to Serbian or from Serbian to English
 - **en-af / af-en** — to translate from English to Afrikaans or from Afrikaans to English
@@ -94,10 +101,6 @@ Please visit [Supported Formats](https://docs.groupdocs.cloud/translation/suppor
 - **fr-de / de-fr** — to translate from French to German or from German to French
 - **fr-it / it-fr** — to translate from French to Italian or from Italian to French
 - **fr-ar / ar-fr** — to translate from French to Arabic or from Arabic to French
-- **de-it / it-de** — to translate from German to Italian or from Italian to German
-- **de-pl / pl-de** — to translate from German to Polish or from Polish to German
-- **ar-es / es-ar** — to translate from Arabic to Spanish or from Spaish to Arabic
-- **ar-tr / tr-ar** — to translate from Arabic to Turkish or from Turkish to Arabic 
 
 ## JSON Request Details
 
