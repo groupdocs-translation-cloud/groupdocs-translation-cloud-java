@@ -231,8 +231,6 @@ public class Example {
         ApiClient defaultClient = new ApiClient(basePath, cliendId, clientSecret, null);
 
         TranslationApi apiInstance = new TranslationApi(defaultClient);
-//        FileRequest fileRequest = new FileRequest(); // FileRequest | String in body of request, containing JSON with parameters for translation.
-
         TextRequest request = new TextRequest();
         request.setSourceLanguage("en");
         request.addTargetLanguagesItem("de");
