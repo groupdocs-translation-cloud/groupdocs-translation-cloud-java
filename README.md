@@ -191,7 +191,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.groupdocs:GroupDocs-translation-cloud:23.10"
+     implementation "com.groupdocs:GroupDocs-translation-cloud:24.3"
   }
 ```
 
