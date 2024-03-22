@@ -205,7 +205,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/GroupDocs-translation-cloud-23.10.jar`
+* `target/GroupDocs-translation-cloud-24.3.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
