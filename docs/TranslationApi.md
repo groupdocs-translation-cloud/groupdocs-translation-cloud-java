@@ -8,6 +8,7 @@ All URIs are relative to *https://api.groupdocs.cloud/v2.0/translation*
 | [**csvPost**](TranslationApi.md#csvPost) | **POST** /csv | Translate CSV and TSV files |
 | [**documentPost**](TranslationApi.md#documentPost) | **POST** /document | Translate Microsoft Word documents, rtf, txt, odt |
 | [**documentRequestIdGet**](TranslationApi.md#documentRequestIdGet) | **GET** /document/{requestId} | Return document translation status.  Also return URLs for downloading of translated document if translation was successful |
+| [**documentTrialGet**](TranslationApi.md#documentTrialGet) | **GET** /document/trial | Return document translation status for trial request.  Also return URLs for downloading of translated document if translation was successful |
 | [**documentTrialPost**](TranslationApi.md#documentTrialPost) | **POST** /document/trial | Trial translate Microsoft Word documents, rtf, txt, odt without conversation. Translate only first page or 1000 symbols. |
 | [**hcGet**](TranslationApi.md#hcGet) | **GET** /hc | Health check for all services. |
 | [**htmlPost**](TranslationApi.md#htmlPost) | **POST** /html | Translate HTML files |
@@ -20,10 +21,12 @@ All URIs are relative to *https://api.groupdocs.cloud/v2.0/translation*
 | [**pdfPost**](TranslationApi.md#pdfPost) | **POST** /pdf | Translate pdf files |
 | [**pdfTrialPost**](TranslationApi.md#pdfTrialPost) | **POST** /pdf/trial | Trial pdf translation. Translate only first page without conversion to another format. |
 | [**presentationPost**](TranslationApi.md#presentationPost) | **POST** /presentation | Translate Microsoft PowerPoint presentations, odp |
-| [**resxPost**](TranslationApi.md#resxPost) | **POST** /resx | Translate RESX files |
+| [**resxPost**](TranslationApi.md#resxPost) | **POST** /resx | Translate Resx files |
 | [**spreadsheetPost**](TranslationApi.md#spreadsheetPost) | **POST** /spreadsheet | Translate Microsoft Excel workbooks, ods |
+| [**srtPost**](TranslationApi.md#srtPost) | **POST** /srt | Translate Srt files |
 | [**textPost**](TranslationApi.md#textPost) | **POST** /text | Translate text |
 | [**textRequestIdGet**](TranslationApi.md#textRequestIdGet) | **GET** /text/{requestId} | Return text translation status.  Also return translated text if translation was successful |
+| [**textTrialGet**](TranslationApi.md#textTrialGet) | **GET** /text/trial | Return text translation status for trial requests.  Also return translated text if translation was successful |
 | [**textTrialPost**](TranslationApi.md#textTrialPost) | **POST** /text/trial | Trial translate text. Translate only 1000 symbols. |
 
 
@@ -248,7 +251,7 @@ public class Example {
     JWT.setAccessToken("YOUR ACCESS TOKEN");
 
     TranslationApi apiInstance = new TranslationApi(defaultClient);
-    String requestId = "requestId_example"; // String | GUID which got from /v3/translation/document response
+    String requestId = "requestId_example"; // String | GUID which got from /translation/document response
     try {
       CloudFileResponse result = apiInstance.documentRequestIdGet(requestId);
       System.out.println(result);
@@ -267,7 +270,76 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **String**| GUID which got from /v3/translation/document response | |
+| **requestId** | **String**| GUID which got from /translation/document response | |
+
+### Return type
+
+[**CloudFileResponse**](CloudFileResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **102** | Information |  -  |
+| **202** | Accepted |  -  |
+| **404** | Not Found |  -  |
+| **206** | Success |  -  |
+
+<a id="documentTrialGet"></a>
+# **documentTrialGet**
+> CloudFileResponse documentTrialGet(requestId)
+
+Return document translation status for trial request.  Also return URLs for downloading of translated document if translation was successful
+
+### Example
+```java
+// Import classes:
+import com.groupdocs.ApiClient;
+import com.groupdocs.ApiException;
+import com.groupdocs.Configuration;
+import com.groupdocs.auth.*;
+import com.groupdocs.models.*;
+import org.openapitools.client.api.TranslationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.groupdocs.cloud/v2.0/translation");
+    
+    // Configure OAuth2 access token for authorization: JWT
+    OAuth JWT = (OAuth) defaultClient.getAuthentication("JWT");
+    JWT.setAccessToken("YOUR ACCESS TOKEN");
+
+    TranslationApi apiInstance = new TranslationApi(defaultClient);
+    String requestId = "requestId_example"; // String | GUID which got from /v3/translation/document response
+    try {
+      CloudFileResponse result = apiInstance.documentTrialGet(requestId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TranslationApi#documentTrialGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **requestId** | **String**| GUID which got from /v3/translation/document response | [optional] |
 
 ### Return type
 
@@ -1061,9 +1133,9 @@ public class Example {
 
 <a id="resxPost"></a>
 # **resxPost**
-> StatusResponse resxPost(resxFileRequest)
+> StatusResponse resxPost(srtFileRequest)
 
-Translate RESX files
+Translate Resx files
 
 ### Example
 ```java
@@ -1085,9 +1157,9 @@ public class Example {
     JWT.setAccessToken("YOUR ACCESS TOKEN");
 
     TranslationApi apiInstance = new TranslationApi(defaultClient);
-    ResxFileRequest resxFileRequest = new ResxFileRequest(); // ResxFileRequest | String in body of request, containing JSON with parameters for translation.
+    SrtFileRequest srtFileRequest = new SrtFileRequest(); // SrtFileRequest | String in body of request, containing JSON with parameters for translation.
     try {
-      StatusResponse result = apiInstance.resxPost(resxFileRequest);
+      StatusResponse result = apiInstance.resxPost(srtFileRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TranslationApi#resxPost");
@@ -1104,7 +1176,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resxFileRequest** | [**ResxFileRequest**](ResxFileRequest.md)| String in body of request, containing JSON with parameters for translation. | [optional] |
+| **srtFileRequest** | [**SrtFileRequest**](SrtFileRequest.md)| String in body of request, containing JSON with parameters for translation. | [optional] |
 
 ### Return type
 
@@ -1170,6 +1242,71 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **spreadsheetFileRequest** | [**SpreadsheetFileRequest**](SpreadsheetFileRequest.md)| String in body of request, containing JSON with parameters for translation. | [optional] |
+
+### Return type
+
+[**StatusResponse**](StatusResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+<a id="srtPost"></a>
+# **srtPost**
+> StatusResponse srtPost(srtFileRequest)
+
+Translate Srt files
+
+### Example
+```java
+// Import classes:
+import com.groupdocs.ApiClient;
+import com.groupdocs.ApiException;
+import com.groupdocs.Configuration;
+import com.groupdocs.auth.*;
+import com.groupdocs.models.*;
+import org.openapitools.client.api.TranslationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.groupdocs.cloud/v2.0/translation");
+    
+    // Configure OAuth2 access token for authorization: JWT
+    OAuth JWT = (OAuth) defaultClient.getAuthentication("JWT");
+    JWT.setAccessToken("YOUR ACCESS TOKEN");
+
+    TranslationApi apiInstance = new TranslationApi(defaultClient);
+    SrtFileRequest srtFileRequest = new SrtFileRequest(); // SrtFileRequest | String in body of request, containing JSON with parameters for translation.
+    try {
+      StatusResponse result = apiInstance.srtPost(srtFileRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TranslationApi#srtPost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **srtFileRequest** | [**SrtFileRequest**](SrtFileRequest.md)| String in body of request, containing JSON with parameters for translation. | [optional] |
 
 ### Return type
 
@@ -1300,6 +1437,72 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **requestId** | **String**| GUID which got from /v3/translation/text response | |
+
+### Return type
+
+[**CloudTextResponse**](CloudTextResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **202** | Accepted |  -  |
+
+<a id="textTrialGet"></a>
+# **textTrialGet**
+> CloudTextResponse textTrialGet(requestId)
+
+Return text translation status for trial requests.  Also return translated text if translation was successful
+
+### Example
+```java
+// Import classes:
+import com.groupdocs.ApiClient;
+import com.groupdocs.ApiException;
+import com.groupdocs.Configuration;
+import com.groupdocs.auth.*;
+import com.groupdocs.models.*;
+import org.openapitools.client.api.TranslationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.groupdocs.cloud/v2.0/translation");
+    
+    // Configure OAuth2 access token for authorization: JWT
+    OAuth JWT = (OAuth) defaultClient.getAuthentication("JWT");
+    JWT.setAccessToken("YOUR ACCESS TOKEN");
+
+    TranslationApi apiInstance = new TranslationApi(defaultClient);
+    String requestId = "requestId_example"; // String | GUID which got from /v3/translation/text response
+    try {
+      CloudTextResponse result = apiInstance.textTrialGet(requestId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TranslationApi#textTrialGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **requestId** | **String**| GUID which got from /v3/translation/text response | [optional] |
 
 ### Return type
 

@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'com.groupdocs'
-version = '24.1'
+version = '24.3'
 
 buildscript {
     repositories {
@@ -30,16 +30,11 @@ if(hasProperty('target') && target == 'android') {
     apply plugin: 'com.github.dcendents.android-maven'
 
     android {
-<<<<<<< HEAD
         compileSdkVersion 25
-        buildToolsVersion '22.0.2'
-=======
-        compileSdkVersion 34
         buildToolsVersion '25.0.2'
->>>>>>> fefc5f74c9be4f9243c08101e69791413075d697
         defaultConfig {
             minSdkVersion 14
-            targetSdkVersion 34
+            targetSdkVersion 25
         }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8

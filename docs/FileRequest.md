@@ -20,9 +20,9 @@
 |**formatting** | **Boolean** | If document&#39;s formatting should be preserved, default true |  [optional] |
 |**route** | **String** | Endpoint route |  [optional] |
 |**separator** | **String** | Separator in files |  [optional] |
-|**elements** | **List&lt;Integer&gt;** | List of slides to translate |  [optional] |
+|**elements** | **List&lt;Integer&gt;** | List of slides to translate (1-based index). If not present, translate all elements (page, slide, worksheet) |  [optional] |
 |**ranges** | [**Map&lt;String, WorksheetData&gt;**](WorksheetData.md) | Dictionary of ranges in Excel workbooks |  [optional] |
-|**shortCodeList** | **Map&lt;String, List&lt;String&gt;&gt;** | Dictionary of short code names and parameters names to translate |  [optional] |
+|**shortcodedict** | **Map&lt;String, List&lt;String&gt;&gt;** | Dictionary of short code names and parameters names to translate |  [optional] |
 |**frontMatterList** | **List&lt;List&lt;String&gt;&gt;** | Dictionary where key is zero-based front matter index and value is list of lists of front matter paths |  [optional] |
 
 
@@ -62,6 +62,7 @@
 | ODP | &quot;Odp&quot; |
 | CSV | &quot;Csv&quot; |
 | TSV | &quot;Tsv&quot; |
+| SRT | &quot;Srt&quot; |
 
 
 
