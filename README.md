@@ -218,8 +218,7 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
-// Import classes:
+ 
 import com.groupdocs.ApiClient;
 import com.groupdocs.ApiException;
 import com.groupdocs.Configuration;
