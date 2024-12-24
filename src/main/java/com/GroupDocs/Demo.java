@@ -1,68 +1,3 @@
-////package com.groupdocs;
-////// Import classes:
-////
-////import com.groupdocs.model.*;
-////import org.openapitools.client.api.TranslationApi;
-////
-////import java.io.IOException;
-////import java.nio.file.Files;
-////import java.nio.file.Paths;
-////
-////public class Demo {
-////    public static void main(String[] args) {
-////        String basePath = "https://api.groupdocs.cloud/v2.0/translation";
-////        String cliendId = "YOUR_CLIENT_ID";
-////        String clientSecret = "YOUR_CLIENT_SECRET";
-////
-////        ApiClient defaultClient = new ApiClient(basePath, cliendId, clientSecret, null);
-////        TranslationApi translationApi = new TranslationApi(defaultClient);
-////
-////        FileRequest fileRequest = new FileRequest();
-////
-////        String fileName = "Blueberries.docx";
-////        fileRequest.setSourceLanguage("en");
-////        fileRequest.addTargetLanguagesItem("zh");
-////        fileRequest.setFormat(FileRequest.FormatEnum.DOCX);
-////        fileRequest.setSavingMode(FileRequest.SavingModeEnum.FILES);
-////        fileRequest.setOutputFormat("docx");
-////        fileRequest.setUrl("");
-////        fileRequest.setOrigin("");
-////
-////        try {
-////            byte[] fileByte = Files.readAllBytes(Paths.get(fileName));
-////            fileRequest.setFile(fileByte);
-////            StatusResponse response = translationApi.autoPost(fileRequest);
-////            String _id = response.getId();
-////            if (!response.getStatus().toString().equals("500")) {
-////                while (true) {
-////                    CloudFileResponse textResponse = translationApi.documentRequestIdGet(_id);
-////                    System.out.println(textResponse);
-////                    if (textResponse.getStatus().toString().equals("200")){
-////                        System.out.println(textResponse);
-////                        break;
-////                    }
-////                    try {
-////                        Thread.sleep(2000);
-////                    } catch (InterruptedException e) {
-////                        e.printStackTrace();
-////                    }
-////                }
-////            }
-////        }
-////        catch(ApiException e){
-////            System.err.println("Exception when calling TranslationApi#pdfPost");
-////            System.err.println("Status code: " + e.getCode());
-////            System.err.println("Reason: " + e.getResponseBody());
-////            System.err.println("Response headers: " + e.getResponseHeaders());
-////            e.printStackTrace();
-////        }
-////        catch (IOException e) {
-////            e.printStackTrace();
-////        }
-////    }
-////}
-//
-//
 package com.groupdocs;
 // Import classes:
 
@@ -79,8 +14,8 @@ import java.util.ArrayList;
 public class Demo {
     public static void main(String[] args) {
         String basePath = "https://api.groupdocs.cloud/v2.0/translation";
-        String cliendId = "translate.cloud";
-        String clientSecret = "5d0da472782620373473703904631795";
+        String cliendId = "YOUR_CLIENT_ID";
+        String clientSecret = "YOUR_CLIENT_SECRET";
 
         ApiClient defaultClient = new ApiClient(basePath, cliendId, clientSecret, null);
         TranslationApi translationApi = new TranslationApi(defaultClient);
@@ -145,66 +80,6 @@ public class Demo {
         }
     }
 }
-
-//package com.groupdocs;
-//// Import classes:
-//
-//import com.groupdocs.model.*;
-//import org.openapitools.client.api.TranslationApi;
-//
-//public class Demo {
-//    public static void main(String[] args) {
-//        String basePath = "https://api.groupdocs.cloud/v2.0/translation";
-//        String cliendId = "translate.cloud";
-//        String clientSecret = "5d0da472782620373473703904631795";
-//
-//        ApiClient defaultClient = new ApiClient(basePath, cliendId, clientSecret, null);
-//        TranslationApi translationApi = new TranslationApi(defaultClient);
-//
-//        TextRequest request = new TextRequest();
-//
-//        request.setSourceLanguage("en");
-//        request.addTargetLanguagesItem("fr");
-//        request.addTargetLanguagesItem("th");
-//        request.addTextsItem("Text to translate");
-//        request.setOrigin("");
-//
-//        try {
-//            String r = translationApi.textPost(request).getId();
-//            System.out.println(r);
-//            CloudTextResponse response = translationApi.textRequestIdGet(r);
-//            if (!response.getStatus().toString().equals("500")) {
-//                while (true) {
-//                    response = translationApi.textRequestIdGet(r);
-//                    if (response.getStatus().toString().equals("200")) {
-//                        System.out.println(response);
-//                        break;
-//
-//                    }
-//                    try {
-//                        Thread.sleep(2000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                }
-//            }
-//        }
-//        catch(ApiException e){
-//            System.err.println("Exception when calling TranslationApi#textPost");
-//            System.err.println("Status code: " + e.getCode());
-//            System.err.println("Reason: " + e.getResponseBody());
-//            System.err.println("Response headers: " + e.getResponseHeaders());
-//            e.printStackTrace();
-//        }
-//    }
-//}
-
-
-
-
-
-
 
 
 
