@@ -11,8 +11,8 @@
 ////public class Demo {
 ////    public static void main(String[] args) {
 ////        String basePath = "https://api.groupdocs.cloud/v2.0/translation";
-////        String cliendId = "translate.cloud";
-////        String clientSecret = "5d0da472782620373473703904631795";
+////        String cliendId = "YOUR_CLIENT_ID";
+////        String clientSecret = "YOUR_CLIENT_SECRET";
 ////
 ////        ApiClient defaultClient = new ApiClient(basePath, cliendId, clientSecret, null);
 ////        TranslationApi translationApi = new TranslationApi(defaultClient);
