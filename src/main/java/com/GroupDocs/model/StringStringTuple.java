@@ -48,7 +48,7 @@ import com.groupdocs.JSON;
 /**
  * StringStringTuple
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-26T12:36:29.580926+03:00[Europe/Moscow]", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-24T16:31:57.131550+03:00[Europe/Moscow]", comments = "Generator version: 7.10.0")
 public class StringStringTuple {
   public static final String SERIALIZED_NAME_ITEM1 = "item1";
   @SerializedName(SERIALIZED_NAME_ITEM1)

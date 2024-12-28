@@ -52,7 +52,7 @@ import com.groupdocs.JSON;
 /**
  * HealthCheckStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-26T12:36:29.580926+03:00[Europe/Moscow]", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-24T16:31:57.131550+03:00[Europe/Moscow]", comments = "Generator version: 7.10.0")
 public class HealthCheckStatus {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)

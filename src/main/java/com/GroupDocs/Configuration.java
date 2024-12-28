@@ -13,9 +13,9 @@
 
 package com.groupdocs;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-26T12:36:29.580926+03:00[Europe/Moscow]", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-24T16:31:57.131550+03:00[Europe/Moscow]", comments = "Generator version: 7.10.0")
 public class Configuration {
-    public static final String VERSION = "24.11";
+    public static final String VERSION = "24.12";
 
     private static ApiClient defaultApiClient = new ApiClient();
 
