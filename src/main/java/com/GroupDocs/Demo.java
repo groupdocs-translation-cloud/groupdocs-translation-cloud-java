@@ -16,13 +16,12 @@ public class Demo {
         TextRequest request = new TextRequest();
 
         request.setSourceLanguage("en");
-        request.addTargetLanguagesItem("fr");
+        request.addTargetLanguagesItem("nl");
         request.addTextsItem("Text to translate");
         request.setOrigin("");
 
         try {
             String r = translationApi.textPost(request).getId();
-            System.out.println(r);
             CloudTextResponse response = translationApi.textRequestIdGet(r);
             if (!response.getStatus().toString().equals("500")) {
                 while (true) {
@@ -30,7 +29,6 @@ public class Demo {
                     if (response.getStatus().toString().equals("200")) {
                         System.out.println(response);
                         break;
-
                     }
                     try {
                         Thread.sleep(2000);
@@ -50,27 +48,6 @@ public class Demo {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

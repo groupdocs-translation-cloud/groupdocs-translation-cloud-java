@@ -4,7 +4,7 @@
 
 [Product Page](https://products.groupdocs.cloud/translation/java/) | [Docs](https://docs.groupdocs.cloud/translation/) | [Demos](https://products.groupdocs.app/translation/family) | [Swagger UI](https://reference.groupdocs.cloud/translation/) | [Examples](https://github.com/groupdocs-translation-cloud/groupdocs-translation-cloud-java) | [Blog](https://blog.groupdocs.cloud/category/translation/) | [Search](https://search.groupdocs.cloud/) | [Free Support](https://forum.groupdocs.cloud/c/translation) | [Free Trial](https://purchase.groupdocs.cloud/trial)
 
-[GroupDocs.Translation Cloud](https://products.groupdocs.cloud/translation/) is Cloud API to translate Word (including RTF and TXT files), Excel (including CSV / TSV files), PowerPoint, PDF, HTML, Markdown (including Markdown with Hugo syntax), OpenDocument, RESX, SRT files, images of JPG, PNG, SVG, BMP and GIF formats, scanned PDFs, audio and video files as well as plain text.
+[GroupDocs.Translation Cloud](https://products.groupdocs.cloud/translation/) is Cloud API to translate Word (including RTF and TXT files), Excel (including CSV / TSV files), PowerPoint, PDF, HTML, Markdown (including Markdown with Hugo syntax), OpenDocument, RESX, SRT files, images of JPG, PNG, SVG, BMP and GIF formats, scanned PDFs, audio and video files as well as plain text. Besides general vocabulary, it provides medical translation, slang translation and summarization translation.
 
 For convenience of our Java customers, we introduce a simple SDK that assists to add translation of all document, image and media file formats mentioned above and plain text to your app with merely a few lines of code.
 
@@ -30,6 +30,9 @@ It is easy to get started with GroupDocs.Translation Cloud and there is nothing 
 - Translation of handwritten text 
 - Translation of audio files, including translation by providing a link
 - Translation of video files, including translation by providing a link
+- Slang translation
+- Medical translation
+- Summarization translation
 
 ## Supported Translation Formats
 
@@ -62,7 +65,7 @@ Please visit [Supported Formats](https://docs.groupdocs.cloud/translation/suppor
 - **en-id / id-en** — to translate from English to Indonesian or from Indonesian to English
 - **en-hi / hi-en** — to translate from English to Hindi or from Hindi to English
 - **en-el / el-en** — to translate from English to Greek or from Greek to English
-- **en-nl / nl-en**— to translate from English to Dutch or from Dutch to English
+- **en-nl / nl-en** — to translate from English to Dutch or from Dutch to English
 - **en-hu / hu-en** — to translate from English to Hunngarian or from Hungarian to English
 - **en-sv / sv-en** — to translate from English to Swedish or from Swedish to English
 - **en-tr / tr-en** — to translate from English to Turkish or from Turkish to English
@@ -193,7 +196,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.groupdocs</groupId>
   <artifactId>GroupDocs-translation-cloud</artifactId>
-  <version>24.12</version>
+  <version>25.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -209,7 +212,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.groupdocs:GroupDocs-translation-cloud:24.12"
+     implementation "com.groupdocs:GroupDocs-translation-cloud:25.2"
   }
 ```
 
@@ -223,7 +226,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/GroupDocs-translation-cloud-24.12.jar`
+* `target/GroupDocs-translation-cloud-25.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -231,40 +234,53 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
+ 
 // Import classes:
-import com.groupdocs.ApiClient;
-import com.groupdocs.ApiException;
-import com.groupdocs.Configuration;
-import com.groupdocs.auth.*;
-import com.groupdocs.models.*;
+import com.groupdocs.model.*;
 import org.openapitools.client.api.TranslationApi;
 
-public class Example {
+public class Demo {
     public static void main(String[] args) {
         String basePath = "https://api.groupdocs.cloud/v2.0/translation";
         String cliendId = "YOUR_CLIENT_ID";
         String clientSecret = "YOUR_CLIENT_SECRET";
 
         ApiClient defaultClient = new ApiClient(basePath, cliendId, clientSecret, null);
+        TranslationApi translationApi = new TranslationApi(defaultClient);
 
-        TranslationApi apiInstance = new TranslationApi(defaultClient);
         TextRequest request = new TextRequest();
+
         request.setSourceLanguage("en");
         request.addTargetLanguagesItem("de");
         request.addTextsItem("Text to translate");
 
         try {
-            CloudTextResponse cloudTextResponse = apiInstance.textRequestIdGet(apiInstance.textPost(request).getId());
-            System.out.println(cloudTextResponse);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TranslationApi#autoPost");
+            String r = translationApi.textPost(request).getId();
+            CloudTextResponse response = translationApi.textRequestIdGet(r);
+            if (!response.getStatus().toString().equals("500")) {
+                while (true) {
+                    response = translationApi.textRequestIdGet(r);
+                    if (response.getStatus().toString().equals("200")) {
+                        System.out.println(response);
+                        break;
+                    }
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }
+        catch(ApiException e){
+            System.err.println("Exception when calling TranslationApi#textPost");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
             e.printStackTrace();
         }
-  }
+    }
 }
 
 ```
@@ -299,8 +315,14 @@ Class | Method | HTTP request | Description
 *TranslationApi* | [**resxPost**](docs/TranslationApi.md#resxPost) | **POST** /resx | Translate Resx files
 *TranslationApi* | [**spreadsheetPost**](docs/TranslationApi.md#spreadsheetPost) | **POST** /spreadsheet | Translate Microsoft Excel workbooks, ods
 *TranslationApi* | [**srtPost**](docs/TranslationApi.md#srtPost) | **POST** /srt | Translate Srt files
+*TranslationApi* | [**summarizeDocumentPost**](docs/TranslationApi.md#summarizeDocumentPost) | **POST** /summarize-document | Summarize and translate document file
+*TranslationApi* | [**summarizeImagePost**](docs/TranslationApi.md#summarizeImagePost) | **POST** /summarize-image | Summarize and translate image or scanned pdf and return file
+*TranslationApi* | [**summarizeMediaPost**](docs/TranslationApi.md#summarizeMediaPost) | **POST** /summarize-media | Summarize audio or video, translate it  and return file as a result
+*TranslationApi* | [**summarizeTextPost**](docs/TranslationApi.md#summarizeTextPost) | **POST** /summarize-text | Summarize and translate text
+*TranslationApi* | [**textMedicalPost**](docs/TranslationApi.md#textMedicalPost) | **POST** /text/medical | Translate medical
 *TranslationApi* | [**textPost**](docs/TranslationApi.md#textPost) | **POST** /text | Translate text
 *TranslationApi* | [**textRequestIdGet**](docs/TranslationApi.md#textRequestIdGet) | **GET** /text/{requestId} | Return text translation status.  Also return translated text if translation was successful
+*TranslationApi* | [**textSlangPost**](docs/TranslationApi.md#textSlangPost) | **POST** /text/slang | Translate slang
 *TranslationApi* | [**textTrialGet**](docs/TranslationApi.md#textTrialGet) | **GET** /text/trial | Return text translation status for trial requests.  Also return translated text if translation was successful
 *TranslationApi* | [**textTrialPost**](docs/TranslationApi.md#textTrialPost) | **POST** /text/trial | Trial translate text. Translate only 1000 symbols.
 *TranslationApi* | [**xmlPost**](docs/TranslationApi.md#xmlPost) | **POST** /xml | Translate XML files
